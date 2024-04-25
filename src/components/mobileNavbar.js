@@ -11,7 +11,7 @@ function mobileNavbar() {
                 <Navbar.Brand href="#home" className='mobileHome'>Upark</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto pages">
+                    <Nav className="me-auto">
                         <Button className='mobileButtons' href=''>PARK FACILITIES</Button>
                         <Button className='mobileButtons' href=''>CLIENTS</Button>
                         <Button className='mobileButtons' href=''>TICKETS</Button>
