@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "uparkweb2921428f": {}
+      },
+      "api": {
+        "uparkweb": {}
+      },
+      "storage": {
+        "uparkmedia": {}
       }
     }
   }

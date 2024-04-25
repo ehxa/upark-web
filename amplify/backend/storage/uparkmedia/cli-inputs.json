@@ -1,0 +1,14 @@
+{
+  "resourceName": "uparkmedia",
+  "policyUUID": "1b46ab2b",
+  "bucketName": "uparkweb4b10e20798304555bf39d6a60a563708",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
