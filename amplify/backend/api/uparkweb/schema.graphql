@@ -1,6 +1,106 @@
-type Note @model @auth(rules: [ { allow: public } ] ){
+type Ticket @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  description: String
+  value: String
+  date: AWSDate
+  time: AWSTime
+  Park: [Park] @hasMany(indexName: "byTicket", fields: ["id"])
+  Spot: [Spot] @hasMany(indexName: "byTicket", fields: ["id"])
+  Vehicle: Vehicle @hasOne
+  User: User @hasOne
+  Photos: [Photos] @hasMany(indexName: "byTicket", fields: ["id"])
+}
+
+type Spot @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  floor: String
+  status: String
+  charger: String
+  vehicle_type: String
+  userID: ID! @index(name: "byUser")
+  parkID: ID! @index(name: "byPark")
+  ticketID: ID! @index(name: "byTicket")
+}
+
+type Photos @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  image: String
+  parkID: ID! @index(name: "byPark")
+  ticketID: ID! @index(name: "byTicket")
+}
+
+type Parkinfo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  floors: String
+  no_spots: Int
+  capacity: String
+  description: String
+}
+
+type Park @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  address: String
+  postal_code: String
+  phone: String
+  email: AWSEmail
+  overview: String
+  Reviews: [Review] @hasMany(indexName: "byPark", fields: ["id"])
+  Spots: [Spot] @hasMany(indexName: "byPark", fields: ["id"])
+  Photos: [Photos] @hasMany(indexName: "byPark", fields: ["id"])
+  Parkinfo: Parkinfo @hasOne
+  ticketID: ID! @index(name: "byTicket")
+}
+
+type Review @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  classification: Int
+  title: String
+  description: String
+  userID: ID! @index(name: "byUser")
+  parkID: ID! @index(name: "byPark")
+}
+
+type Payment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  card_number: String
+  first_name: String
+  surname: String
+  cvc: Int
+  phone: String
+  exp_date: AWSDate
+  users: [User] @manyToMany(relationName: "UserPayment")
+}
+
+type Vehicle @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  plate: String
+  type: String
+  users: [User] @manyToMany(relationName: "UserVehicle")
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String
+  password: String
+  email: AWSEmail
+  phone: String
+  first_name: String
+  surname: String
+  age: Int
+  country: String
+  Payments: [Payment] @manyToMany(relationName: "UserPayment")
+  Vehicles: [Vehicle] @manyToMany(relationName: "UserVehicle")
+  Reviews: [Review] @hasMany(indexName: "byUser", fields: ["id"])
+  Spots: [Spot] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+type Note @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   description: String
   image: String
 }
+ 
