@@ -1,40 +1,51 @@
+
+
+$accent: #c6538c;
+$background: #1C1D28;
+$form: #D4D5DF;
+$selected: #F8A934;
+$scroll: #65292F;
+$columns: #3E4053;
+$secondary: #D6D3D3;
+$font: white;
+
+
 .mainNavbar {
     height: 100vh;
-    width: 20%;
-    background-color: rgb(255, 255, 255);
-    
+    width: 100%;
 }
 .pages{
     display: flex;
     flex-direction: column;
     border-right-style: solid;
+    border-right-color: #B23537;
     border-width: 2px;
 }
 
 .navButtons{
-    background-color: rgb(255, 255, 255);
-    color: black;
+    color: $font;
     margin: 2em;
     :hover{
-        color: white;
+        color: $selected;
     }
     :active{
-        color: white;
+        color: $selected;
     }
     border-style: none ;
+    background-color: $background;
 }
 
 .mobileButtons{
-    background-color: rgb(255, 255, 255);
-    color: black;
+    color: $font;
     margin: 0.5em;
     :hover{
-        color: white;
+        color: $selected;
     }
     :active{
-        color: white;
+        color: $selected;
     }
     border-style: none ;
+    background-color: $background;
 }
 
 .mobileNavbar{
@@ -48,11 +59,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    color: black;
     font-size: larger;
     font-weight: bold;
     border-style: none;
+    background-color: $background;
 }
 
 .mobileHome{
@@ -60,8 +70,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    color: black;
     font-size: larger;
     font-weight: bold;
     border-style: none;
@@ -73,3 +81,52 @@
     }
 }
 
+
+@media (min-width: 842px) {
+    .mobileNavbar{
+        display: none;
+    }
+}
+
+body {
+    background-color: $background;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0;
+}
+
+.central{
+    background-color: $form;
+    width: 100%;
+    height: 70vh;
+    margin-top: 12.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.widgets-main{
+    height: 70vh;
+    margin-left: 1em;
+    margin-top: 12.5em;
+}
+
+.notifications{
+    background-color: $columns;
+    width: 90%;
+    height: 30vh;
+    margin: 1em;
+    margin-top: 0;
+    border-radius: 2em;
+}
+.reminders{
+    background-color: $columns;
+    width: 90%;
+    height: 30vh;
+    margin: 1em;
+    margin-top: 3em;
+    border-radius: 2em;
+}
+
+.Row {
+    margin: 0;
+}

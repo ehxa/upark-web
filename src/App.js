@@ -20,16 +20,35 @@ import {
 import { generateClient } from 'aws-amplify/api';
 import Navbar from './components/navbar';
 import MobileNavbar from './components/mobileNavbar';
-import Maps from './components/maps';
+import Central from './components/central';
+import Reminders from "./components/reminders";
+import Notifications from "./components/notifications";
+import Maps from './components/central';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { Row, Col } from "react-bootstrap";
 const client = generateClient();
 
 const App = ({ signOut }) => {
 
   return (
     <>
-      <Navbar></Navbar>
-      <MobileNavbar></MobileNavbar>
+      <Row style={{ margin: 0 }}>
+        <Col sm={2}>
+          <Navbar></Navbar>
+          <MobileNavbar></MobileNavbar>
+        </Col>
+        <Col>
+          <Central></Central>
+        </Col>
+        <Col sm={2} className="widgets-main">
+          <Col>
+            <Notifications></Notifications>
+          </Col>
+          <Col>
+            <Reminders></Reminders>
+          </Col>
+        </Col>
+      </Row>
     </>
   );
 };
